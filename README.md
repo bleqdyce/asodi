@@ -1,6 +1,6 @@
 # A Shallow Object Detection Introduction
 
-The goal of this article is originally about to record what I have read and survey about Object detection, and later I found out that it's much better to make it like an beginner-oriented introduction so here it is.
+The goal of this article is originally about to record what I have read and survey about Object detection, and later I found out that it's much better to make it an beginner-oriented introduction so here it is.
 
 I would try to stay shallow, friendly and organized as much as I can so that it wouldn't freak out beginners or make them lost in terminology and formula.
 
@@ -53,6 +53,7 @@ To put it simply, this is what actually each steps do:
 1. **Region Proposal** - Find those region may potentially contains an object. The most common and easiest method is **sliding window**. Just like the figure shown below, a fixed-size window would slide over entire image and the bounded area would be treated as the proposed regions.
 
 ![sliding window](./sliding_window_example.gif)
+
 2. **Feature Extraction** - Transform the proposed regions of image into a different kind of representation which is usually defined by human. For example, Histogram of Gradient (HoG) will calculate the gradient between pixels and take is as a representation of image. It was once very popular because its promising performance on object detection.
 
 ![HOG](hog.png)
