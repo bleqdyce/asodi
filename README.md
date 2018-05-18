@@ -102,7 +102,7 @@ I only link the very origin paper because each structure I mention have various 
 
 *****
 
-## Benchmarks / Datasets
+## Datasets
 
 - [COCO](http://cocodataset.org)
 - Pascal VOC [2007](http://host.robots.ox.ac.uk/pascal/VOC/voc2007/) / [2012](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/)
@@ -111,3 +111,20 @@ I only link the very origin paper because each structure I mention have various 
 
 ![comparison1](./dataset_comparison_1.jpg)
 ![comparison2](./dataset_comparison_2.jpg)
+
+## Metrics
+
+1. Mean Average Precision (mAP)
+2. Intersection over Union (IoU)
+
+## Links
+- Engilsh Resources
+  - [handong1587 GitHub study list](https://handong1587.github.io/deep_learning/2015/10/09/object-detection.html#object-detection-in-3d)
+  - [Awesome Object Detection Github](https://github.com/amusi/awesome-object-detection)
+- Simplified Chinese Resources
+  - [[DL]经典目标检测论文阅读](https://zhpmatrix.github.io/2018/02/19/detection-paper-reading/)
+  - [深度学习从入门到放弃之CV-Object detection目录](https://zhuanlan.zhihu.com/p/31117359)
+  - [综述：深度学习时代的目标检测算法](https://zhuanlan.zhihu.com/p/33277354)
+  - [深度学习时代的目标检测算法综述](http://www.infoq.com/cn/news/2017/09/deep-leayd-detection-algorithm)
+  - [知乎回答 - 目标检测算法有哪些？](https://www.zhihu.com/question/53438706)
+  - [基于深度学习的「目标检测」算法综述](https://zhuanlan.zhihu.com/p/33981103)
