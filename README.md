@@ -4,8 +4,6 @@ The goal of this article is originally about to record what I have read and surv
 
 I would try to stay shallow, friendly and organized as much as I can so that it wouldn't freak out beginners or make them lost in terminology and formula.
 
-*****
-
 ## Object Detection
 
 Generally speaking, It's a task about to locate certain object and tell what the object is. e.g., [Where's Wally](https://en.wikipedia.org/wiki/Where%27s_Wally%3F). Human can do this effortlessly so that you may not notice how hard this actually could be. Not to mention designing a program / algorithm to do so.
@@ -20,7 +18,6 @@ e.g., Use Neural Network to find out **Where's Wally / Waldo** like [this](https
 
 If you want to go through the history of Object Detection from the very beginning, go check out Lecture 1 of [Stanford CS231n](http://cs231n.stanford.edu/). It's a very nice course for those who want to study computer vision. However, This course is not designed for beginners, so if you are pretty new to this topic, maybe take a Machine Learning course on MOOC would be much more helpful.
 
-*****
 
 ### Terminology
 
@@ -40,7 +37,6 @@ Keep in mind that my *shallow* explanation may not be comprehensive enough becau
 
 *If you still want more detail, try google search.*
 
-*****
 
 ### Overview
 
