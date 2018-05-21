@@ -63,7 +63,7 @@ To put it simply, this is what actually each steps do:
 
 Here is some keywords of traditional method, I only list few because I know very less about them.
 
-1. Region Proposal- Sliding Window
+1. Region Proposal- Sliding Window, Edge Boxes, Selective Search
 2. Feature Extraction - Haar, HOG, LBP, ACF
 3. Classification - SVM, AdaBoost, DPM
 
