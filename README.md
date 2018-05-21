@@ -4,6 +4,8 @@ The goal of this article is originally about to record what I have read and surv
 
 I would try to stay shallow, friendly and organized as much as I can so that it wouldn't freak out beginners or make them lost in terminology and formula.
 
+*Btw, I'm not a native english speaker.*
+
 ## Object Detection
 
 Generally speaking, It's a task about to locate certain object and tell what the object is. e.g., [Where's Wally](https://en.wikipedia.org/wiki/Where%27s_Wally%3F). Human can do this effortlessly so that you may not notice how hard this actually could be. Not to mention designing a program / algorithm to do so.
@@ -31,9 +33,9 @@ Keep in mind that my *shallow* explanation may not be comprehensive enough becau
 - **Computer Vision** is a sub domain of Machine Learning. Its goal is pretty much same with Machine Learning but only focus on the tasks those process image or video.
   - **Image Classification** is a topic / task of Computer Vision whose goal is to find a way to tell what the object on the image is automatically.
   - There are still other tasks like **Image Segmentation**, **Image Captioning** ...
-- **Neural Network** is a branch of Machine Learning Classifier algorithm. Due to the increasing of amount of data and computing power, Its performance has already outperform almost every other algorithm in almost every Machine Learning task in recent year. It is said that its origin of the study is about to simulate how neuron works in human brain.
+- **Neural Network** is a branch of Machine Learning Classifier algorithm. Due to the increasing of amount of data and computing power, its performance has already outperform most other algorithm in most Machine Learning task in recent year. It is said that its origin of the study is about to simulate how neuron works in human brain.
   - **Convolutional Neural Network (CNN)** is one kind of Neural Network structure which is perfect for solving most Computer Vision tasks. The core idea is all about using **convolutional layer** to simulate how human brian process what people see.
-- **TensorFlow** is a 
+- **TensorFlow** is a
 
 *If you still want more detail, try google search.*
 
@@ -61,7 +63,7 @@ To put it simply, this is what actually each steps do:
 
 Here is some keywords of traditional method, I only list few because I know very less about them.
 
-1. Region Proposal- Sliding Window
+1. Region Proposal- Sliding Window, Edge Boxes, Selective Search
 2. Feature Extraction - Haar, HOG, LBP, ACF
 3. Classification - SVM, AdaBoost, DPM
 
@@ -69,7 +71,7 @@ Here is some keywords of traditional method, I only list few because I know very
 
 Generally, NN-based method could be  classified into 2 classes. One is often called as **Two-Stage Detectors** due to the way it approach the task. They first find regions that are potential to be a object over image and then try to tell what kind of object is it. Another is **One-Stage Detectors** which attempt to solve two problems together.
 
-Some also says that the major difference between the two kind is how they approach the problem. Two-Stage Detector try to take Object Detection as a classification problem and One-Stage Detector treat it as a regression problem. Also, the trade-off between accuracy and speed is different, Two-Stage Detectors are usually more accurate and One-Stage Detectors are faster.
+Some also says that the major difference between the two kind is how they approach the problem. **Two-Stage Detector** try to take Object Detection as a classification problem and **One-Stage Detector** treat it as a regression problem. Also, they have different trade-off between accuracy and speed, **Two-Stage Detectors** are usually more accurate and **One-Stage Detectors** are faster.
 
 Here is the paper list of both kinds detectors. I only list those I've heard of, If I miss something important, remind me please.
 
@@ -92,6 +94,10 @@ Here is the paper list of both kinds detectors. I only list those I've heard of,
   - [DSSD](https://arxiv.org/abs/1701.06659)
   - [YOLO v3](https://arxiv.org/abs/1804.02767)
 
+Also, I found this tree graph is pretty useful to understand the situation of this research domain. However, it shows that the last update was at 12/31/17 so it might be a little outdated.
+
+![od_tree_eng](./od_tree_eng.jpg)
+
 Other than Object Detection framework, each method mentioned above also must combine with a **Backbone Network** (some may called it as **Feature Extractor**, just like the role in the three step flow I mention above) to function normally. Different Backbone Network imply different structure, different possible performance and different computing power required. There are a lot of classic neural network structure over the years and here are the most common ones.
 
 - [ResNet](https://arxiv.org/abs/1512.03385)
@@ -101,28 +107,44 @@ Other than Object Detection framework, each method mentioned above also must com
 
 I only link the very origin paper because each structure I mention have various variants. You may see something like ResNet-101, VGG-16, MobileNet v1... and so on. Some suffix just means that it use different parameter but some may actually means significant breakthrough. Just realize that the research about network structure is a very popular research topic so they would get improved all the time.
 
-*****
-
 ## Datasets
 
+![comparison1](./dataset_comparison_1.jpg)
+
 - [COCO](http://cocodataset.org)
-- Pascal VOC [2007](http://host.robots.ox.ac.uk/pascal/VOC/voc2007/) / [2012](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/)
+  - 80K training images, 40K val images and 20K test images
+  - 80 categories, around 7.2 objects per image
+  - Mostly 80K train + 35K val as train, only 5K val as val
+- Pascal VOC [07](http://host.robots.ox.ac.uk/pascal/VOC/voc2007/) / [12](http://host.robots.ox.ac.uk/pascal/VOC/voc2012/)
+  - Mostly 07 + 12 trainval to train, 07 test set for test
   <!--- aeroplane, bicycle, bird, boat, bottle, bus, car, chair, cow, diningtable, dog, horse, motorbike, person, pottedplant, sheep, sofa, train, tvmonitor-->
 - [ImageNet Det](http://www.image-net.org/challenges/LSVRC/)
 
-![comparison1](./dataset_comparison_1.jpg)
 ![comparison2](./dataset_comparison_2.jpg)
+
+Generally, COCO is the most difficult one because of the number of small target.
 
 ## Metrics
 
-1. Mean Average Precision (mAP)
-2. Intersection over Union (IoU)
+To compare the detection performance between methods, there are two most used metrics. One is **Intersection over Union (IoU)** and another is **mean Average Precision (mAp)**.
 
-## Links
-- Engilsh Resources
+1. **Intersection over Union (IoU)** shows how much does a prediction bounding box and a ground truth bounding box overlap. The more they overlap, the higher score is. The formula is shown below. We will set a threshold on IoU and  treat the predictions which got lower scores as a wrong predict. The threshold must be set between [0, 1], usually 0.5 or 0.75.
+
+![iou](./iou_equation.png)
+
+2. **mean Average Precision (mAP)** is the metrics we most concern about. It shows the general performance of detectors. We only count predictions which scores is higher than IoU threshold as correctly predictions. Based on this, we calculate and draw **precision and recall curve** for every object class respectively. The Area Under Curve is so-called **Average Precision**. Finally, we could simply take mean of **Average Precision** over all class to get **mean Average Precision**. The value would be in [0, 100%]
+
+![demo](./metrics_demo.png)
+
+Other than two mentioned above, **Inference time / fps** is also a very important metrics because in most case, we would like to deploy the object detector to mobile devices, which means that the computing power would be much lower than normal PC.
+
+## Helpful Links
+
+- English
   - [handong1587 GitHub study list](https://handong1587.github.io/deep_learning/2015/10/09/object-detection.html#object-detection-in-3d)
   - [Awesome Object Detection Github](https://github.com/amusi/awesome-object-detection)
-- Simplified Chinese Resources
+  - [Object detection: speed and accuracy comparison (Faster R-CNN, R-FCN, SSD, FPN, RetinaNet and YOLOv3)](https://medium.com/@jonathan_hui/object-detection-speed-and-accuracy-comparison-faster-r-cnn-r-fcn-ssd-and-yolo-5425656ae359)
+- Simplified Chinese
   - [[DL]经典目标检测论文阅读](https://zhpmatrix.github.io/2018/02/19/detection-paper-reading/)
   - [深度学习从入门到放弃之CV-Object detection目录](https://zhuanlan.zhihu.com/p/31117359)
   - [综述：深度学习时代的目标检测算法](https://zhuanlan.zhihu.com/p/33277354)
