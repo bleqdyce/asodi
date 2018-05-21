@@ -132,7 +132,7 @@ To compare the detection performance between methods, there are two most used me
 
 ![iou](./iou_equation.png)
 
-2. **mean Average Precision (mAP)** is the metrics we most concern about. It shows the general performance of detectors. We only count predictions which scores is higher than IoU threshold as correctly predictions. Based on this, we calculate and draw **precision and recall curve** for every object class respectively. The Area Under Curve is so-called **Average Precision**. Finally, we could simply take mean of **Average Precision** over all class to get **mean Average Precision**. The value would be in [0, 100%]
+2. **mean Average Precision (mAP)** is the metrics we most concern about. It shows the general performance of detectors. We only count predictions which scores is higher than IoU threshold as correctly predictions. Based on this, we calculate and draw **precision and recall curve** for every object class respectively. The Area Under Curve is so-called **Average Precision**. Finally, we could simply take mean of **Average Precision** over all class to get **mean Average Precision**. And the range of mAP value would be [0, 100%].
 
 ![demo](./metrics_demo.png)
 
@@ -144,6 +144,7 @@ Other than two mentioned above, **Inference time / fps** is also a very importan
   - [handong1587 GitHub study list](https://handong1587.github.io/deep_learning/2015/10/09/object-detection.html#object-detection-in-3d)
   - [Awesome Object Detection Github](https://github.com/amusi/awesome-object-detection)
   - [Object detection: speed and accuracy comparison (Faster R-CNN, R-FCN, SSD, FPN, RetinaNet and YOLOv3)](https://medium.com/@jonathan_hui/object-detection-speed-and-accuracy-comparison-faster-r-cnn-r-fcn-ssd-and-yolo-5425656ae359)
+  - [mAP details](https://datascience.stackexchange.com/questions/25119/how-to-calculate-map-for-detection-task-for-the-pascal-voc-challenge)
 - Simplified Chinese
   - [[DL]经典目标检测论文阅读](https://zhpmatrix.github.io/2018/02/19/detection-paper-reading/)
   - [深度学习从入门到放弃之CV-Object detection目录](https://zhuanlan.zhihu.com/p/31117359)
